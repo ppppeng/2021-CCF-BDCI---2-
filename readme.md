@@ -18,6 +18,7 @@
 
 运行以下命令安装必要环境
 ```
+python -m pip install paddlepaddle-gpu==2.2.0.post112 -f https://www.paddlepaddle.org.cn/whl/linux/mkl/avx/stable.html
 pip install -r requirements.txt
 ```
 
@@ -26,9 +27,8 @@ pip install -r requirements.txt
 
 ### 数据预处理
 
+
 ```
-mv data/data118216/* data/
-cd work/PaddleVideo
 python data_process.py
 ```
 note：请将data_process.py,主函数中base_path修改为您的数据集根目录,初始数据集目录如下所示    
@@ -44,19 +44,23 @@ note：请将data_process.py,主函数中base_path修改为您的数据集根目
     |- fixed1_fold
         |- fold0_train_data.npy
         |- fold0_train_label.npy
-        |- fold1_train_data.npy
-        |- fold1_train_label.npy
+        |- fold0_valid_data.npy
+        |- fold0_valid_label.npy
         ...
         |- fold5_train_data.npy
         |- fold5_train_label.npy
+        |- fold5_valid_data.npy
+        |- fold5_valid_label.npy
     |- fixed2_fold
         |- fold0_train_data.npy
         |- fold0_train_label.npy
-        |- fold1_train_data.npy
-        |- fold1_train_label.npy
+        |- fold0_valid_data.npy
+        |- fold0_valid_label.npy
         ...
         |- fold5_train_data.npy
         |- fold5_train_label.npy
+        |- fold5_valid_data.npy
+        |- fold5_valid_label.npy
     |- fixed1_train_data.npy
     |- fixed2_train_data.npy
     |- fixed1_test_B_data.npy       
@@ -91,17 +95,14 @@ note: 在out_score中预定义了融合的参数
 
 ## 模型复现
 
-模型权重文件在 data/目录下 output_backup.zip
+模型权重文件因太大，可通过以下链接下载
+链接：https://pan.baidu.com/s/18_C1yUOeutkgJVkoLJldHQ 提取码：8yul
 
 解压并复制里面权重到PaddleVideo/output内，此时运行测试再融合即可复现结果
 
 ```
-cd /home/aistudio/work/PaddleVideo
-unzip -o /home/aistudio/data/output_backup.zip
-mv -b output_backup/* output
-
 python main.py --test
 python out_score.py
 ```
 
-（注意：由于B榜提交有一个模型使用有误，将configs/recognition/ctrgcn_fold中的5个 yaml文件首段name:"CTRGCN2"改为name:"CTRGCN"即可复现）
+（注意：由于B榜提交有一个模型使用有误，将configs/recognition/ctrgcn_fold中的5个yaml文件首段name:"CTRGCN2"改为name:"CTRGCN"即可复现）
