@@ -100,9 +100,9 @@ note: 在out_score中预定义了融合的参数
 
 解压并复制里面权重到PaddleVideo/output内，此时运行测试再融合即可复现结果
 
+（注意：B榜最终结果，需将configs/recognition/ctrgcn_fold中的5个yaml文件首段name:"CTRGCN2"改为name:"CTRGCN"可得到）
 ```
 python main.py --test
 python out_score.py
 ```
 
-（注意：B榜最终结果，需将configs/recognition/ctrgcn_fold中的5个yaml文件首段name:"CTRGCN2"改为name:"CTRGCN"可得到）
