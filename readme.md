@@ -105,4 +105,4 @@ python main.py --test
 python out_score.py
 ```
 
-（注意：由于B榜提交有一个模型使用有误，将configs/recognition/ctrgcn_fold中的5个yaml文件首段name:"CTRGCN2"改为name:"CTRGCN"即可复现）
+（注意：B榜最终结果，需将configs/recognition/ctrgcn_fold中的5个yaml文件首段name:"CTRGCN2"改为name:"CTRGCN"可得到）
