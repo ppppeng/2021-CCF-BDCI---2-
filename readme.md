@@ -74,7 +74,7 @@ note：请将data_process.py,主函数中base_path修改为您的数据集根目
 ```
 python main.py --valid 
 ```
-note: 修改数据集根目录后，需要修改configs/recognition中用到的YAML文件的数据集路径。在main.py中定义了要训练的模型，有更改需求请自行修改。
+note: 修改数据集根目录后，需要修改configs/recognition中用到的YAML文件的数据集路径。在main.py中定义了要训练的模型，有更改需求请自行修改。在训练时如果显存超出，请改小模型对应batch_size，但可能会影响模型精度。
 
 训练后权重会保存在output文件夹中
 ```
@@ -82,7 +82,7 @@ python main.py --test
 ```
 对训练好的模型权重进行测试，生成对应的score.npy
 
-note: 对部分的模型进行了多尺度的测试，在main.py中有详细的定义。在测试时如果显存超出，请改小模型对应batch_size，但可能会影响模型精度。
+note: 对部分的模型进行了多尺度的测试，在main.py中有详细的定义。
 
 
 ### 模型后处理
